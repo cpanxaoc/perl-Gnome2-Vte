@@ -1,3 +1,11 @@
+2003/12/31 02:23 (-0500) muppetman
+
+	* xs/Vte.xs: mark ax unused in functions which don't touch the input
+	stack, to hush compiler warnings.
+	
+	* xs/VteTerminal.xs: use disambiguating braces to hush compiler
+	warnings
+
 2003/12/28 00:54 (+0100) kaffeetisch
 
 	* Vte.pm: Don't initialize Gtk2.
