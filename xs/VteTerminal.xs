@@ -26,7 +26,7 @@ char **SvVteCharArray (SV *ref)
 {
 	char **result = NULL;
 
-	if (SvOK (ref))
+	if (SvOK (ref)) {
 		if (SvRV (ref) && SvTYPE (SvRV (ref)) == SVt_PVAV) {
 			AV *array = (AV *) SvRV (ref);
 			SV **string;
@@ -42,6 +42,7 @@ char **SvVteCharArray (SV *ref)
 		}
 		else
 			croak ("the argument and environment parameters must be array references");
+	}
 
 	return result;
 }
@@ -50,7 +51,7 @@ GdkColor *SvVteGdkColorArray (SV *ref, glong *size)
 {
 	GdkColor *result = NULL;
 
-	if (SvOK (ref))
+	if (SvOK (ref)) {
 		if (SvRV (ref) && SvTYPE (SvRV (ref)) == SVt_PVAV) {
 			AV *array = (AV *) SvRV (ref);
 			SV **color;
@@ -66,6 +67,7 @@ GdkColor *SvVteGdkColorArray (SV *ref, glong *size)
 		}
 		else
 			croak ("the pallete parameter must be a reference to an array of GdkColor's");
+	}
 
 	return result;
 }
@@ -158,7 +160,6 @@ vte_terminal_fork_command (terminal, command, arg_ref, env_ref, directory, lastl
 	gboolean wtmp
     PREINIT:
 	char **argv, **envv;
-	int i;
     CODE:
 	argv = SvVteCharArray (arg_ref);
 	envv = SvVteCharArray (env_ref);
