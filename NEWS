@@ -1,3 +1,10 @@
+Overview of changes in Gnome2::Vte 0.04
+=======================================
+
+* Replace the old and broken synopsis [muppet]
+* Bind and test get_text_include_trailing_spaces and get_default_emulation
+* Test match_check, get_status_line, get_icon_title, and get_window_title.
+
 Overview of changes in Gnome2::Vte 0.03
 =======================================
 
