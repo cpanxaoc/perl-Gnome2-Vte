@@ -16,6 +16,11 @@ our %build_reqs = (
   'Vte'                     => '0.10',
 );
 
+# minimum required version of dependancies we need to run
+our %runtime_reqs = (
+	'Vte' => undef,
+);
+
 unless (eval "use ExtUtils::Depends;"
            . "use ExtUtils::PkgConfig;"
            # just seeing if Glib is available isn't enough, make sure
@@ -39,6 +44,8 @@ unless (eval "use ExtUtils::Depends;"
 }
 
 my %pkgcfg = ExtUtils::PkgConfig->find("vte >= $build_reqs{'Vte'}");
+
+$runtime_reqs{Vte} = $pkgcfg{modversion};
 
 mkdir 'build', 0777;
 
@@ -92,7 +99,17 @@ package MY;
 sub postamble
 {
 	return Glib::MakeHelper->postamble_clean ()
-	     . Glib::MakeHelper->postamble_docs (@main::xs_files);
+	     . Glib::MakeHelper->postamble_docs (@main::xs_files)
+	     . Glib::MakeHelper->postamble_rpms (
+		'GNOME_VTE_RUN' => $runtime_reqs{'Vte'},
+		'GNOME_VTE' => $build_reqs{'Vte'},
+		'PERL_EXTUTILS_DEPENDS' => 
+			$build_reqs{'perl-ExtUtils-Depends'},
+		'PERL_EXTUTILS_PKGCONFIG' => 
+			$build_reqs{'perl-ExtUtils-PkgConfig'},
+		'PERL_GLIB' => $build_reqs{'perl-Glib'},
+		'PERL_GTK' => $build_reqs{'perl-Gtk2'},
+	       );
 }
 
 package MAIN;

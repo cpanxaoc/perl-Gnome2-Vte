@@ -6,6 +6,7 @@ MANIFEST			This list of files
 MANIFEST.SKIP
 maps
 META.yml			Module meta-data (added by MakeMaker)
+perl-Gnome2-Vte.spec.in
 README
 t/VteTerminal.t
 Vte.pm
