@@ -9,7 +9,7 @@ unless (Gtk2 -> init_check()) {
   plan skip_all => "Couldn't initialize Gtk2";
 }
 else {
-  plan tests => 26;
+  plan tests => 25;
 }
 
 ###############################################################################
@@ -74,10 +74,17 @@ $terminal -> set_cursor_blinks(1);
 $terminal -> set_scrollback_lines(100);
 
 $terminal -> set_font(Gtk2::Pango::FontDescription -> from_string("Monospace 10"));
-is($terminal -> get_font() -> to_string(), "Monospace 10");
-
 $terminal -> set_font_from_string("Sans 12");
-is($terminal -> get_font() -> to_string(), "Sans 12");
+
+SKIP: {
+  skip("set_font_full and set_font_from_string_full are new in 0.10.11", 0)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 11));
+
+  $terminal -> set_font_full(Gtk2::Pango::FontDescription -> from_string("Monospace 10"), "use-default");
+  $terminal -> set_font_from_string_full("Sans 12", "force-disable");
+}
+
+isa_ok($terminal -> get_font(), "Gtk2::Pango::FontDescription");
 
 like($terminal -> get_using_xft(), qr/^(?:|1)$/);
 ok(not $terminal -> get_has_selection());

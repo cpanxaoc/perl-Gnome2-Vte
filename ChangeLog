@@ -1,3 +1,10 @@
+2004/04/27 20:27 (+0200) kaffeetisch
+
+	* maps
+	* t/VteTerminal.t
+	* xs/VteTerminal.xs: Bind and test set_font_full and
+	set_font_from_string_full.
+
 2004/04/24 22:57 (+0200) kaffeetisch
 
 	* Vte.pm: Add a import method to enable version checking.

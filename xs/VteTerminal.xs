@@ -364,6 +364,24 @@ vte_terminal_set_font_from_string (terminal, name)
 	VteTerminal *terminal
 	const char *name
 
+#if VTE_CHECK_VERSION (0, 11, 11)
+
+##  void vte_terminal_set_font_full(VteTerminal *terminal, const PangoFontDescription *font_desc, VteTerminalAntiAlias anti_alias)
+void
+vte_terminal_set_font_full (terminal, font_desc, anti_alias)
+	VteTerminal *terminal
+	const PangoFontDescription *font_desc
+	VteTerminalAntiAlias anti_alias
+
+##  void vte_terminal_set_font_from_string_full(VteTerminal *terminal, const char *name, VteTerminalAntiAlias anti_alias)
+void
+vte_terminal_set_font_from_string_full (terminal, name, anti_alias)
+	VteTerminal *terminal
+	const char *name
+	VteTerminalAntiAlias anti_alias
+
+#endif
+
 ## const PangoFontDescription *vte_terminal_get_font(VteTerminal *terminal)
 PangoFontDescription *
 vte_terminal_get_font (terminal)
