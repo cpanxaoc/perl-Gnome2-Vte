@@ -70,6 +70,10 @@ GdkColor *SvVteGdkColorArray (SV *ref, glong *size)
 	return result;
 }
 
+#if !VTE_CHECK_VERSION (0, 11, 0)
+  typedef struct vte_char_attributes VteCharAttributes;
+#endif
+
 SV *
 newSVVteCharAttributes (GArray *text_array)
 {
