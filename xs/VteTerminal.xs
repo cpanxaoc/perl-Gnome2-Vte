@@ -645,6 +645,15 @@ const char *
 vte_terminal_get_emulation (terminal)
 	VteTerminal *terminal
 
+#if VTE_CHECK_VERSION (0, 11, 11)
+
+##  const char *vte_terminal_get_default_emulation(VteTerminal *terminal)
+const char *
+vte_terminal_get_default_emulation (terminal)
+	VteTerminal *terminal
+
+#endif
+
 ##  void vte_terminal_set_encoding(VteTerminal *terminal, const char *codeset) 
 void
 vte_terminal_set_encoding (terminal, codeset)

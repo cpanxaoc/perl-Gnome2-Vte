@@ -9,7 +9,7 @@ unless (Gtk2 -> init_check()) {
   plan skip_all => "Couldn't initialize Gtk2";
 }
 else {
-  plan tests => 34;
+  plan tests => 39;
 }
 
 ###############################################################################
@@ -145,7 +145,7 @@ $terminal -> match_clear_all();
 
 my $id = $terminal -> match_add(".*");
 
-# $terminal -> match_check(0, 10);
+ok(defined $terminal -> match_check(0, 10));
 
 SKIP: {
   skip("match_set_cursor is new in 0.11.0", 0)
@@ -166,10 +166,17 @@ $terminal -> match_remove($id);
 $terminal -> set_emulation("xterm-color");
 is($terminal -> get_emulation(), "xterm-color");
 
+SKIP: {
+  skip("get_default_emulation is new in 0.11.11", 1)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 11));
+
+  ok(defined $terminal -> get_default_emulation());
+}
+
 $terminal -> set_encoding("ISO-8859-15");
 is($terminal -> get_encoding(), "ISO-8859-15");
 
-# $terminal -> get_status_line();
+is($terminal -> get_status_line(), "");
 
 is_deeply([$terminal -> get_padding()], [2, 2]);
 
@@ -179,8 +186,9 @@ like($terminal -> get_char_descent(), $number);
 like($terminal -> get_char_height(), $number);
 like($terminal -> get_char_width(), $number);
 like($terminal -> get_column_count(), $number);
-# $terminal -> get_icon_title();
 like($terminal -> get_row_count(), $number);
-# $terminal -> get_window_title();
+
+is($terminal -> get_icon_title(), undef);
+is($terminal -> get_window_title(), undef);
 
 $terminal -> reset(1, 1);
