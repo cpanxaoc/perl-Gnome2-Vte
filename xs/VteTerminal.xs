@@ -290,6 +290,22 @@ vte_terminal_set_color_dim (terminal, dim)
 	VteTerminal *terminal
 	const GdkColor *dim
 
+#if VTE_CHECK_VERSION (0, 11, 11)
+
+##  void vte_terminal_set_color_cursor (VteTerminal *terminal, const GdkColor *cursor_background)
+void
+vte_terminal_set_color_cursor (terminal, cursor_background)
+	VteTerminal *terminal
+	const GdkColor *cursor_background
+
+##  void vte_terminal_set_color_highlight (VteTerminal *terminal, const GdkColor *highlight_background)
+void
+vte_terminal_set_color_highlight (terminal, highlight_background)
+	VteTerminal *terminal
+	const GdkColor *highlight_background
+
+#endif
+
 ##  void vte_terminal_set_colors(VteTerminal *terminal, const GdkColor *foreground, const GdkColor *background, const GdkColor *palette, glong palette_size) 
 void
 vte_terminal_set_colors (terminal, foreground, background, palette_ref)
@@ -339,6 +355,22 @@ void
 vte_terminal_set_background_transparent (terminal, transparent)
 	VteTerminal *terminal
 	gboolean transparent
+
+#if VTE_CHECK_VERSION (0, 11, 0)
+
+##  void vte_terminal_set_background_tint_color(VteTerminal *terminal, const GdkColor *color) 
+void
+vte_terminal_set_background_tint_color (terminal, color)
+	VteTerminal *terminal
+	const GdkColor *color
+
+##  void vte_terminal_set_scroll_background(VteTerminal *terminal, gboolean scroll) 
+void
+vte_terminal_set_scroll_background (terminal, scroll)
+	VteTerminal *terminal
+	gboolean scroll
+
+#endif
 
 ##  void vte_terminal_set_cursor_blinks(VteTerminal *terminal, gboolean blink) 
 void
@@ -542,6 +574,28 @@ vte_terminal_match_check (VteTerminal *terminal, glong column, glong row, OUTLIS
     CLEANUP:
 	g_free (RETVAL);
 
+#if VTE_CHECK_VERSION (0, 11, 0)
+
+##  void vte_terminal_match_set_cursor(VteTerminal *terminal, int tag, GdkCursor *cursor) 
+void
+vte_terminal_match_set_cursor (terminal, tag, cursor)
+	VteTerminal *terminal
+	int tag
+	GdkCursor *cursor
+
+#endif
+
+#if VTE_CHECK_VERSION (0, 11, 9)
+
+##  void vte_terminal_match_set_cursor_type(VteTerminal *terminal, int tag, GdkCursorType cursor_type) 
+void
+vte_terminal_match_set_cursor_type (terminal, tag, cursor_type)
+	VteTerminal *terminal
+	int tag
+	GdkCursorType cursor_type
+
+#endif
+
 ##  void vte_terminal_set_emulation(VteTerminal *terminal, const char *emulation) 
 void
 vte_terminal_set_emulation (terminal, emulation)
@@ -617,35 +671,3 @@ vte_terminal_get_row_count (terminal)
 const char *
 vte_terminal_get_window_title (terminal)
 	VteTerminal *terminal
-
-# --------------------------------------------------------------------------- #
-
-# These aren't documented and therefor not implemented.  Scream if you need
-# them.
-
-###  void vte_terminal_set_scroll_background(VteTerminal *terminal, gboolean scroll) 
-#void
-#vte_terminal_set_scroll_background (terminal, scroll)
-#	VteTerminal *terminal
-#	gboolean scroll
-
-###  void vte_terminal_set_background_tint_color(VteTerminal *terminal, const GdkColor *color) 
-#void
-#vte_terminal_set_background_tint_color (terminal, color)
-#	VteTerminal *terminal
-#	const GdkColor *color
-
-###  void vte_terminal_match_set_cursor(VteTerminal *terminal, int tag, GdkCursor *cursor) 
-#void
-#vte_terminal_match_set_cursor (terminal, tag, cursor)
-#	VteTerminal *terminal
-#	int tag
-#	GdkCursor *cursor
-
-###  void vte_terminal_match_set_cursor_type(VteTerminal *terminal, int tag, GdkCursorType cursor_type) 
-#void
-#vte_terminal_match_set_cursor_type (terminal, tag, cursor_type)
-#	VteTerminal *terminal
-#	int tag
-#	GdkCursorType cursor_type
-

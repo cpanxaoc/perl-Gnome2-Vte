@@ -63,12 +63,28 @@ $terminal -> set_color_background($white);
 $terminal -> set_color_dim($black);
 $terminal -> set_colors($black, $white, [$white, $black, $white, $black, $white, $black, $white, $black]);
 
+SKIP: {
+  skip("set_color_cursor and set_color_highlight are new in 0.11.11", 0)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 11));
+
+  $terminal -> set_color_cursor($black);
+  $terminal -> set_color_highlight($black);
+}
+
 $terminal -> set_default_colors();
 
 # $terminal -> set_background_image();
 # $terminal -> set_background_image_file();
 $terminal -> set_background_saturation(0.5);
 $terminal -> set_background_transparent(0.5);
+
+SKIP: {
+  skip("set_tint_color and set_scroll_background are new in 0.11.0", 0)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 0));
+
+  $terminal -> set_background_tint_color($black);
+  $terminal -> set_scroll_background(1);
+}
 
 $terminal -> set_cursor_blinks(1);
 $terminal -> set_scrollback_lines(100);
@@ -111,9 +127,24 @@ is_deeply([$terminal -> get_cursor_position()], [0, 0]);
 $terminal -> match_clear_all();
 
 my $id = $terminal -> match_add(".*");
-$terminal -> match_remove($id);
 
-# $terminal -> match_check();
+# $terminal -> match_check(0, 10);
+
+SKIP: {
+  skip("match_set_cursor is new in 0.11.0", 0)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 0));
+
+  $terminal -> match_set_cursor($id, Gtk2::Gdk::Cursor -> new("arrow"));
+}
+
+SKIP: {
+  skip("match_set_cursor_type is new in 0.11.9", 0)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 9));
+
+  $terminal -> match_set_cursor_type($id, "arrow");
+}
+
+$terminal -> match_remove($id);
 
 $terminal -> set_emulation("xterm-color");
 is($terminal -> get_emulation(), "xterm-color");
