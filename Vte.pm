@@ -14,6 +14,11 @@ our @ISA = qw(DynaLoader);
 
 our $VERSION = '0.02';
 
+sub import {
+  my $self = shift();
+  $self -> VERSION(@_);
+}
+
 sub dl_load_flags { 0x01 }
 
 Gnome2::Vte -> bootstrap($VERSION);

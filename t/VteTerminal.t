@@ -54,8 +54,8 @@ is($terminal -> get_allow_bold(), 1);
 $terminal -> set_scroll_on_output(1);
 $terminal -> set_scroll_on_keystroke(1);
 
-my $white = Gtk2::Gdk::Color -> new(0, 0, 0);
-my $black = Gtk2::Gdk::Color -> new(255, 255, 255);
+my $white = Gtk2::Gdk::Color -> new(0xFFFF, 0xFFFF, 0xFFFF);
+my $black = Gtk2::Gdk::Color -> new(0, 0, 0);
 
 $terminal -> set_color_bold($black);
 $terminal -> set_color_foreground($black);
