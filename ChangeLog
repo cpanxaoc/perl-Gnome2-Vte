@@ -1,5 +1,6 @@
 2004/02/14 16:39 (+0100) kaffeetisch
 
+	A copyright.pod
 	* Makefile.PL: Switch to the new EU::Depends and ::PkgConfig
 	versions.
 
