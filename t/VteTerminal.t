@@ -9,7 +9,7 @@ unless (Gtk2 -> init_check()) {
   plan skip_all => "Couldn't initialize Gtk2";
 }
 else {
-  plan tests => 25;
+  plan tests => 34;
 }
 
 ###############################################################################
@@ -118,9 +118,26 @@ my ($text, $attributes) = $terminal -> get_text(sub { 1; });
 ok(defined($text));
 isa_ok($attributes, "ARRAY");
 
+SKIP: {
+  skip("get_text_include_trailing_spaces is new in 0.11.12", 2)
+    unless (Gnome2::Vte -> CHECK_VERSION(0, 11, 12));
+
+  ($text, $attributes) = $terminal -> get_text_include_trailing_spaces(sub { 1; });
+  ok(defined($text));
+  isa_ok($attributes, "ARRAY");
+}
+
 ($text, $attributes) = $terminal -> get_text_range(0, 0, 10, 10, sub { 1; });
 ok(defined($text));
 isa_ok($attributes, "ARRAY");
+
+isa_ok($attributes -> [0], "HASH");
+ok(exists($attributes -> [0] -> { strikethrough }));
+ok(exists($attributes -> [0] -> { underline }));
+ok(exists($attributes -> [0] -> { fore }));
+ok(exists($attributes -> [0] -> { back }));
+ok(exists($attributes -> [0] -> { row }));
+ok(exists($attributes -> [0] -> { column }));
 
 is_deeply([$terminal -> get_cursor_position()], [0, 0]);
 

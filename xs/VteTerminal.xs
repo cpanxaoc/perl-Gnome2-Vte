@@ -490,7 +490,7 @@ vte_terminal_get_text (terminal, func, data=NULL)
     PREINIT:
 	GPerlCallback *callback;
 	GArray *attributes;
-	char *text;
+	char *text = "";
     PPCODE:
 	callback = vte2perl_is_selected_create (func, data);
 	attributes = g_array_new (FALSE, TRUE, sizeof (VteCharAttributes));
@@ -508,6 +508,44 @@ vte_terminal_get_text (terminal, func, data=NULL)
 
 	g_array_free(attributes, TRUE);
 	g_free (text);
+
+#if VTE_CHECK_VERSION (0, 11, 12)
+
+=for apidoc
+
+Returns the selected text and a reference to a VteCharAttributes array
+describing every character in that text.
+
+=cut
+#  char *vte_terminal_get_text_include_trailing_spaces(VteTerminal *terminal, gboolean(*is_selected)(VteTerminal *terminal, glong column, glong row, gpointer data), gpointer data, GArray *attributes)
+void
+vte_terminal_get_text_include_trailing_spaces (terminal, func, data=NULL)
+	VteTerminal *terminal
+	SV *func
+	SV *data
+    PREINIT:
+	GPerlCallback *callback;
+	GArray *attributes;
+	char *text = "";
+    PPCODE:
+	callback = vte2perl_is_selected_create (func, data);
+	attributes = g_array_new (FALSE, TRUE, sizeof (VteCharAttributes));
+
+	g_object_set_data_full (G_OBJECT (terminal),
+	                        "_is_selected_callback",
+	                        callback,
+	                        (GDestroyNotify) gperl_callback_destroy);
+
+	text = vte_terminal_get_text_include_trailing_spaces (terminal, vte2perl_is_selected, callback, attributes);
+
+	EXTEND (sp, 2);
+	PUSHs (sv_2mortal (newSVpv (text, PL_na)));
+	PUSHs (sv_2mortal (newSVVteCharAttributes (attributes)));
+
+	g_array_free(attributes, TRUE);
+	g_free (text);
+
+#endif
 
 =for apidoc
 
