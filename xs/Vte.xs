@@ -20,7 +20,7 @@
 
 #include "vte2perl.h"
 
-MODULE = Gnome2::Vte	PACKAGE = Gnome2::Vte	PREFIX = vte_
+MODULE = Gnome2::Vte	PACKAGE = Gnome2::Vte
 
 =for object Gnome2::Vte::main
 
@@ -31,7 +31,7 @@ BOOT:
 #include "boot.xsh"
 
 void
-vte_get_version_info (class)
+GET_VERSION_INFO (class)
     PPCODE:
 	EXTEND (SP, 3);
 	PUSHs (sv_2mortal (newSViv (VTE_MAJOR_VERSION)));
@@ -40,7 +40,7 @@ vte_get_version_info (class)
 	PERL_UNUSED_VAR (ax);
 
 bool
-vte_check_version (class, major, minor, micro)
+CHECK_VERSION (class, major, minor, micro)
 	int major
 	int minor
 	int micro
