@@ -1,0 +1,8 @@
+Overview of changes in Gnome2::Vte 0.03
+=======================================
+
+* Various small fixes to the build environment and the test suite.
+* Newly wrapped methods: Gnome2::Vte::Terminal::set_font_full,
+set_font_from_string_full, set_color_cursor, set_color_highlight,
+set_background_tint_color, set_scroll_background, match_set_cursor, and
+match_set_cursor_type.
