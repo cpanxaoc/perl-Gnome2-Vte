@@ -6,7 +6,7 @@ use 5.008;
 use strict;
 use warnings;
 
-use Gtk2 -init;
+use Gtk2;
 
 require DynaLoader;
 

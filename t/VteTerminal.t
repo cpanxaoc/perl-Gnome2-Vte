@@ -1,9 +1,16 @@
 #!/usr/bin/perl -w
 use strict;
-use Test::More tests => 26;
+use Test::More;
 use Gnome2::Vte;
 
 # $Header$
+
+unless (Gtk2 -> init_check()) {
+  plan skip_all => "Couldn't initialize Gtk2";
+}
+else {
+  plan tests => 26;
+}
 
 ###############################################################################
 

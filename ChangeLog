@@ -1,3 +1,9 @@
+2003/12/28 00:54 (+0100) kaffeetisch
+
+	* Vte.pm: Don't initialize Gtk2.
+
+	* t/VteTerminal.t: Skip all tests if Gtk2 can't be initialized.
+
 2003/12/23 01:30 (+0100) kaffeetisch
 
 	* Makefile.PL: Don't call do_pod_files twice.
