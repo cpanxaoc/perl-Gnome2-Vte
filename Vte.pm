@@ -23,7 +23,7 @@ __END__
 
 =head1 NAME
 
-Gnome2::Vte - Perl interface to the VTE library
+Gnome2::Vte - Perl interface to the Virtual Terminal Emulation library
 
 =head1 SYNOPSIS
 
@@ -49,5 +49,9 @@ L<Gtk2>, L<Gtk2::api> and L<http://developer.gnome.org/doc/API/2.0/vte/>.
 =head1 AUTHOR
 
 Torsten Schoenfeld E<lt>kaffeetisch@web.deE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright (C) 2003 by the gtk2-perl team
 
 =cut

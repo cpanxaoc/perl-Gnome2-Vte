@@ -1,3 +1,11 @@
+2003/12/12 23:35 (+0100) kaffeetisch
+
+	A README
+	* MANIFEST: Add a README.
+
+	* Vte.pm: Be more verbose in the NAME section.  Add copyright
+	notice.
+
 2003/12/06 01:02 (+0100) kaffeetisch
 
 	* Vte.pm: Change the abstract and the synopsis to actually refer
