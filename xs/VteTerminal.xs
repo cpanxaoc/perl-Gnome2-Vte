@@ -424,6 +424,12 @@ vte_terminal_reset (terminal, full, clear_history)
 	gboolean full
 	gboolean clear_history
 
+=for apidoc
+
+Returns the selected text and a reference to a VteCharAttributes array
+describing every character in that text.
+
+=cut
 #  char *vte_terminal_get_text(VteTerminal *terminal, gboolean(*is_selected)(VteTerminal *terminal, glong column, glong row, gpointer data), gpointer data, GArray *attributes)
 void
 vte_terminal_get_text (terminal, func, data=NULL)
@@ -452,6 +458,12 @@ vte_terminal_get_text (terminal, func, data=NULL)
 	g_array_free(attributes, TRUE);
 	g_free (text);
 
+=for apidoc
+
+Returns the selected text and a reference to a VteCharAttributes array
+describing every character in that text.
+
+=cut
 ##  char *vte_terminal_get_text_range(VteTerminal *terminal, glong start_row, glong start_col, glong end_row, glong end_col, gboolean(*is_selected)(VteTerminal *terminal, glong column, glong row, gpointer data), gpointer data, GArray *attributes) 
 void
 vte_terminal_get_text_range (terminal, start_row, start_col, end_row, end_col, func, data=NULL)
