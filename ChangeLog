@@ -1,0 +1,12 @@
+2003/11/25 22:16 (+0100) kaffeetisch
+
+	A LICENSE
+	A MANIFEST
+	A Makefile.PL
+	A Vte.pm
+	A genmaps.pl
+	A maps
+	A vte2perl.h
+	A t/VteTerminal.t
+	A xs/Vte.xs
+	A xs/VteTerminal.xs: Initial import.
