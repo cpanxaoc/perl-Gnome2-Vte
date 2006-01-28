@@ -1,5 +1,9 @@
 2006/01/28	kaffeetisch
 
+	* NEWS, Vte.pm: Version 0.05.
+
+2006/01/28	kaffeetisch
+
 	* MANIFEST, genmaps.pl: Retire good ol' genmaps.pl.
 
 	* Vte.pm: Change my email address.
