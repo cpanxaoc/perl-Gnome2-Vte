@@ -74,7 +74,7 @@ L<http://developer.gnome.org/doc/API/2.0/vte/>.
 
 =head1 AUTHOR
 
-Torsten Schoenfeld E<lt>kaffeetisch@web.deE<gt>
+Torsten Schoenfeld E<lt>kaffeetisch at gmx dot deE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -163,8 +163,8 @@ SKIP: {
 
 $terminal -> match_remove($id);
 
-$terminal -> set_emulation("xterm-color");
-is($terminal -> get_emulation(), "xterm-color");
+$terminal -> set_emulation("xterm");
+is($terminal -> get_emulation(), "xterm");
 
 SKIP: {
   skip("get_default_emulation is new in 0.11.11", 1)
