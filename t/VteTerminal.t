@@ -103,7 +103,7 @@ SKIP: {
 isa_ok($terminal -> get_font(), "Gtk2::Pango::FontDescription");
 
 like($terminal -> get_using_xft(), qr/^(?:|1)$/);
-ok(not $terminal -> get_has_selection());
+ok(defined $terminal -> get_has_selection());
 
 $terminal -> set_word_chars("/");
 ok($terminal -> is_word_char("/"));
