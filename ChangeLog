@@ -1,5 +1,9 @@
 2006-07-14	kaffeetisch
 
+	* Makefile.PL, NEWS, Vte.pm, copyright.pod: Version 0.06.
+
+2006-07-14	kaffeetisch
+
 	* t/VteTerminal.t, xs/VteTerminal.xs: Bind and test
 	vte_terminal_feed_child and vte_terminal_set_pty.
 

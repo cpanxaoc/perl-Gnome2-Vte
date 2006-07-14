@@ -80,9 +80,9 @@ sub MY::postamble {
 		COPYRIGHT_FROM => 'copyright.pod')
 	     . Glib::MakeHelper->postamble_rpms (
 		'GNOME_VTE' => $build_reqs{'Vte'},
-		'PERL_EXTUTILS_DEPENDS' => 
+		'PERL_EXTUTILS_DEPENDS' =>
 			$build_reqs{'perl-ExtUtils-Depends'},
-		'PERL_EXTUTILS_PKGCONFIG' => 
+		'PERL_EXTUTILS_PKGCONFIG' =>
 			$build_reqs{'perl-ExtUtils-PkgConfig'},
 		'PERL_GLIB' => $build_reqs{'perl-Glib'},
 		'PERL_GTK' => $build_reqs{'perl-Gtk2'},
