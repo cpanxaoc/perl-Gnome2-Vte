@@ -1,3 +1,8 @@
+2006-07-14	kaffeetisch
+
+	* t/VteTerminal.t, xs/VteTerminal.xs: Bind and test
+	vte_terminal_feed_child and vte_terminal_set_pty.
+
 2006/05/30	kaffeetisch
 
 	* t/VteTerminal.t: Fix test failure.
