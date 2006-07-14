@@ -16,6 +16,13 @@ our %build_reqs = (
   'Vte'                     => '0.10',
 );
 
+our %perl_reqs = (
+  'Glib'                => $build_reqs{'perl-Glib'},
+  'Gtk2'                => $build_reqs{'perl-Gtk2'},
+  'ExtUtils::Depends'   => $build_reqs{'perl-ExtUtils-Depends'},
+  'ExtUtils::PkgConfig' => $build_reqs{'perl-ExtUtils-PkgConfig'},
+);
+
 unless (eval "use ExtUtils::Depends '$build_reqs{'perl-ExtUtils-Depends'}';"
            . "use ExtUtils::PkgConfig '$build_reqs{'perl-ExtUtils-PkgConfig'}';"
            . "use Glib '$build_reqs{'perl-Glib'}';"
@@ -26,12 +33,7 @@ unless (eval "use ExtUtils::Depends '$build_reqs{'perl-ExtUtils-Depends'}';"
   warn "$@\n";
   WriteMakefile(
     PREREQ_FATAL => 1,
-    PREREQ_PM    => {
-      'Glib'                => $build_reqs{'perl-Glib'},
-      'Gtk2'                => $build_reqs{'perl-Gtk2'},
-      'ExtUtils::Depends'   => $build_reqs{'perl-ExtUtils-Depends'},
-      'ExtUtils::PkgConfig' => $build_reqs{'perl-ExtUtils-PkgConfig'},
-    },
+    PREREQ_PM    => \%perl_reqs,
   );
   exit 1; # not reached
 }
@@ -70,6 +72,7 @@ WriteMakefile(
   ABSTRACT_FROM => 'Vte.pm', # retrieve abstract from module
   XSPROTOARG    => '-noprototypes',
   MAN3PODS      => \%pod_files,
+  PREREQ_PM     => \%perl_reqs,
   $vte->get_makefile_vars,
 );
 
