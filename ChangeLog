@@ -1,5 +1,9 @@
 2006-09-23	kaffeetisch
 
+	* NEWS, Vte.pm: Version 0.07.
+
+2006-09-23	kaffeetisch
+
 	* t/VteTerminal.t, xs/VteTerminal.xs: Bind and test
 	vte_terminal_set_opacity.
 
