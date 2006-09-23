@@ -86,6 +86,13 @@ $terminal -> set_background_saturation(0.5);
 $terminal -> set_background_transparent(0.5);
 
 SKIP: {
+  skip "set_opacity", 0
+    unless Gnome2::Vte -> CHECK_VERSION(0, 14, 0);
+
+  $terminal -> set_opacity(0xffff);
+}
+
+SKIP: {
   skip("set_tint_color and set_scroll_background", 0)
     unless (Gnome2::Vte -> CHECK_VERSION(0, 12, 0));
 

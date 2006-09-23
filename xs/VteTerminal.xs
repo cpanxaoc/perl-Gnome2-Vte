@@ -380,6 +380,12 @@ vte_terminal_set_background_transparent (terminal, transparent)
 	VteTerminal *terminal
 	gboolean transparent
 
+#if VTE_CHECK_VERSION (0, 14, 0)
+
+void vte_terminal_set_opacity (VteTerminal *terminal, guint16 opacity);
+
+#endif
+
 #if VTE_CHECK_VERSION (0, 12, 0)
 
 ##  void vte_terminal_set_background_tint_color(VteTerminal *terminal, const GdkColor *color)
