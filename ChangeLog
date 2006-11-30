@@ -1,5 +1,9 @@
 2006-11-30	kaffeetisch
 
+	* NEWS, Vte.pm: Version 0.08.
+
+2006-11-30	kaffeetisch
+
 	* VteTerminal.xs: Fix compilation error with vte 0.11.11.
 
 	* t/VteTerminal.t, xs/VteTerminal.xs: Fix potential crash when
