@@ -1,3 +1,9 @@
+2008-01-19  Torsten Schoenfeld  <kaffeetisch@gmx.de>
+
+	* xs/VteTerminal.xs: Don't use OUTLIST to wrap
+	vte_terminal_match_check, it seems to cause problems due to bugs
+	in newer versions of xsubpp.
+
 2006-11-30	kaffeetisch
 
 	* NEWS, Vte.pm: Version 0.08.

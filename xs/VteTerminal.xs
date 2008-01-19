@@ -641,10 +641,17 @@ vte_terminal_match_remove (terminal, tag)
 	int tag
 
 ##  char *vte_terminal_match_check(VteTerminal *terminal, glong column, glong row, int *tag)
-gchar *
-vte_terminal_match_check (VteTerminal *terminal, glong column, glong row, OUTLIST int tag)
-    CLEANUP:
-	g_free (RETVAL);
+void
+vte_terminal_match_check (VteTerminal *terminal, glong column, glong row)
+    PREINIT:
+	gchar *match;
+	int tag;
+    PPCODE:
+	match = vte_terminal_match_check (terminal, column, row, &tag);
+	EXTEND (SP, 2);
+	PUSHs (sv_2mortal (newSVGChar (match)));
+	PUSHs (sv_2mortal (newSViv (tag)));
+	g_free (match);
 
 #if VTE_CHECK_VERSION (0, 12, 0)
 
