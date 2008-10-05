@@ -4,7 +4,7 @@ use Test::More;
 use Glib qw(TRUE FALSE);
 use Gnome2::Vte;
 
-# $Header$
+# $Id$
 
 unless (Gtk2 -> init_check()) {
   plan skip_all => "Couldn't initialize Gtk2";
