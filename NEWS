@@ -1,4 +1,4 @@
-Overview of changes in Gnome2::Vte <next>
+Overview of changes in Gnome2::Vte 0.10
 =======================================
 
 * Avoid a segfault in the tests.

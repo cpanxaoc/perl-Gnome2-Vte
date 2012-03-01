@@ -12,7 +12,7 @@ require DynaLoader;
 
 our @ISA = qw(DynaLoader);
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 sub import {
   my $self = shift();
